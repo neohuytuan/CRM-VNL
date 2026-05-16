@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yến Sào Vĩnh Hưng CRM - Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Skeleton Loading Animation */
+        @keyframes skeleton-loading {
+            0% { background-position: 100% 50%; }
+            100% { background-position: 0 50%; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #f3e6dc 25%, #ede0d7 50%, #f3e6dc 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite linear;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#FAF8F4",
+                        "on-primary-fixed": "#271900",
+                        "on-background": "#211a15",
+                        "surface-container-high": "#f3e6dc",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#ede0d7",
+                        "on-tertiary-fixed": "#0e2006",
+                        "error-container": "#ffdad6",
+                        "surface": "#FAF8F4",
+                        "on-primary-container": "#4d3400",
+                        "surface-container": "#f9ebe2",
+                        "on-secondary-container": "#686258",
+                        "primary-fixed": "#ffdeaa",
+                        "surface-dim": "#e5d8ce",
+                        "outline-variant": "#d2c4b2",
+                        "primary-fixed-dim": "#f0bf6a",
+                        "background": "#FAF8F4",
+                        "outline": "#817566",
+                        "on-surface-variant": "#4f4538",
+                        "secondary-fixed": "#eae1d5",
+                        "secondary-container": "#e7ded2",
+                        "on-tertiary-container": "#2b3e21",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#fceee5",
+                        "on-primary-fixed-variant": "#5f4100",
+                        "tertiary-container": "#93a984",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#FFFDF9",
+                        "surface-container-low": "#fff1e7",
+                        "tertiary": "#506444",
+                        "surface-variant": "#ede0d7",
+                        "primary": "#7c5808",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4b463d",
+                        "tertiary-fixed": "#d2eac1",
+                        "surface-tint": "#7c5808",
+                        "inverse-surface": "#362f29",
+                        "on-tertiary-fixed-variant": "#394c2e",
+                        "on-surface": "#211a15",
+                        "secondary-fixed-dim": "#cec5ba",
+                        "inverse-primary": "#f0bf6a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#C89B4A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "topbar-height": "72px",
+                        "sidebar-width": "260px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden min-h-screen flex selection:bg-primary-container selection:text-on-primary">
+<!-- SideNavBar -->
+<nav class="bg-surface/60 dark:bg-surface-container-low/60 backdrop-blur-xl font-body-md text-body-md fixed left-0 top-0 h-screen w-[260px] border-r border-outline-variant/30 flex flex-col py-stack-lg z-50 transition-all duration-300 ease-in-out">
+<!-- Header -->
+<div class="px-6 pb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">nest_eco_leaf</span>
+</div>
+<div class="overflow-hidden">
+<h1 class="font-display-lg text-[18px] leading-tight font-bold text-primary truncate" title="Yến Sào Vĩnh Hưng">Yến Sào Vĩnh Hưng</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Premium Management</p>
+</div>
+</div>
+</div>
+<!-- Main Navigation -->
+<div class="flex-1 overflow-y-auto px-2 space-y-1">
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary bg-primary-container/10 border-l-4 border-primary-container font-bold rounded-r-lg group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
+                Tổng quan
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-r-lg border-l-4 border-transparent group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">lightbulb</span>
+                Cơ hội
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-r-lg border-l-4 border-transparent group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">task_alt</span>
+                Công việc
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-r-lg border-l-4 border-transparent group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">list_alt</span>
+                Danh sách
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-r-lg border-l-4 border-transparent group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">payments</span>
+                Thanh toán
+            </a>
+</div>
+<!-- Footer Navigation -->
+<div class="px-2 pt-4 mt-auto border-t border-outline-variant/20 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-r-lg border-l-4 border-transparent group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
+                Cài đặt
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-r-lg border-l-4 border-transparent group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">logout</span>
+                Đăng xuất
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest/80 backdrop-blur-md font-label-md text-label-md fixed top-0 right-0 h-topbar-height w-[calc(100%-260px)] border-b border-outline-variant/20 shadow-sm flex justify-between items-center px-margin-desktop gap-gutter z-40">
+<!-- Search & Filter -->
+<div class="flex flex-1 items-center gap-4 max-w-2xl">
+<div class="flex-1 relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-high/40 border border-transparent focus:border-primary-container focus:bg-surface-container-lowest rounded-full py-2 pl-10 pr-4 text-on-surface placeholder:text-on-surface-variant outline-none transition-all duration-300" placeholder="Tìm kiếm cơ hội, công việc..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant/50 text-on-surface-variant hover:bg-surface-variant/30 transition-colors font-label-md text-[14px]">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Tháng này</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-variant/30 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-error rounded-full border border-surface-container-lowest"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant/30 mx-1"></div>
+<!-- User Profile -->
+<button class="flex items-center gap-3 hover:bg-surface-variant/30 py-1 px-2 pr-3 rounded-full transition-colors">
+<img alt="User Avatar" class="w-9 h-9 rounded-full border border-outline-variant/30 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWT5Qz4YGG4YTf-kQtvbS-Hy0soQ2fU2MCqb8VJzNdE5NsFZTr1EW227r3HxBnPc5OmwDEvfT9lNVsiJATnqOceRGNlnVvXzzHyclyW9S1y1XLMnvMuN9800Pj4w4Va9VTbulIiq-mwBBhJiqF0qzx7LN-2J65MdQfHQoky8Wg3ApRusSKiEVPLt0ouWJvsoORdNKuWrRXowndy-C9SMiyrGyETHG-RrxPtXw8NDLJXlJsrwB8yp-2LvzFa839AE3nZA3ONDRtAA"/>
+<div class="text-left leading-tight">
+<p class="font-label-md text-label-md text-on-surface">Minh Tran</p>
+<p class="font-label-sm text-[11px] text-on-surface-variant">Giám đốc Kinh doanh</p>
+</div>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-[72px] flex-1 p-margin-desktop bg-background min-h-[calc(100vh-72px)]">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<!-- Metric Card 1: Tổng Khách hàng -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div class="skeleton w-12 h-4 rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant mb-1">Tổng Khách hàng</p>
+<div class="flex items-baseline gap-2">
+<p class="font-headline-md text-on-surface">1,240</p>
+<span class="text-tertiary text-label-sm font-medium">+5%</span>
+</div>
+</div>
+</div>
+<!-- Metric Card 2: Số Cơ hội mới -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-11 h-11 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div class="skeleton w-10 h-4 rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant mb-1">Cơ hội mới</p>
+<div class="flex items-baseline gap-2">
+<p class="font-headline-md text-on-surface">45</p>
+<span class="text-tertiary text-label-sm font-medium">+12%</span>
+</div>
+</div>
+</div>
+<!-- Metric Card 3: Doanh số dự kiến -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm group hover:shadow-md transition-shadow lg:col-span-1">
+<div class="flex justify-between items-start mb-4">
+<div class="w-11 h-11 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div class="skeleton w-14 h-4 rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant mb-1">Doanh số dự kiến</p>
+<div class="flex items-baseline gap-2">
+<p class="font-headline-md text-on-surface truncate">3.450.000.000 ₫</p>
+</div>
+</div>
+</div>
+<!-- Metric Card 4: Công việc quá hạn -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-11 h-11 rounded-lg bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">running_with_errors</span>
+</div>
+<div class="skeleton w-8 h-4 rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant mb-1">Công việc quá hạn</p>
+<div class="flex items-baseline gap-2">
+<p class="font-headline-md text-on-surface">12</p>
+<span class="text-error text-label-sm font-medium">-2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Charts & Tasks Row -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Revenue Chart (8/12) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/30 shadow-sm flex flex-col min-h-[450px]">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h3 class="font-headline-md text-on-surface">Biểu đồ Doanh số &amp; Cơ hội</h3>
+<p class="font-label-sm text-on-surface-variant">Phân tích hiệu quả kinh doanh theo tháng</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full text-label-sm border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Doanh số
+                        </div>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full text-label-sm border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span> Cơ hội
+                        </div>
+</div>
+</div>
+<!-- Chart Placeholder with subtle skeleton -->
+<div class="flex-1 relative flex flex-col justify-end">
+<div class="absolute inset-0 flex flex-col justify-between opacity-20 pointer-events-none">
+<div class="border-t border-outline"></div>
+<div class="border-t border-outline"></div>
+<div class="border-t border-outline"></div>
+<div class="border-t border-outline"></div>
+</div>
+<div class="flex items-end justify-between h-[300px] px-4 gap-6 z-10 relative">
+<!-- Bars -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full max-w-[40px] bg-primary-container/40 rounded-t-sm h-[40%] group-hover:bg-primary-container transition-colors duration-300"></div>
+<span class="text-label-sm text-on-surface-variant">T1</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full max-w-[40px] bg-primary-container/40 rounded-t-sm h-[60%] group-hover:bg-primary-container transition-colors duration-300"></div>
+<span class="text-label-sm text-on-surface-variant">T2</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full max-w-[40px] bg-primary-container/40 rounded-t-sm h-[55%] group-hover:bg-primary-container transition-colors duration-300"></div>
+<span class="text-label-sm text-on-surface-variant">T3</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 group relative">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[11px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">1.2B</div>
+<div class="w-full max-w-[40px] bg-primary-container rounded-t-sm h-[85%] shadow-md"></div>
+<span class="text-label-sm text-primary font-bold">T4</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full max-w-[40px] skeleton rounded-t-sm h-[40%] opacity-40"></div>
+<span class="text-label-sm text-on-surface-variant">T5</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full max-w-[40px] skeleton rounded-t-sm h-[30%] opacity-40"></div>
+<span class="text-label-sm text-on-surface-variant">T6</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Task Reminders (4/12) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-body-lg font-bold text-on-surface">Nhắc việc sắp đến hạn</h3>
+<button class="text-primary text-label-sm hover:underline">Tất cả</button>
+</div>
+<div class="space-y-4 flex-1">
+<!-- Task Item 1 -->
+<div class="flex gap-4 p-3 rounded-lg hover:bg-surface-variant/20 transition-colors border border-transparent hover:border-outline-variant/30 cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-on-surface truncate font-semibold">Gọi điện tư vấn Gói VIP</p>
+<p class="font-label-sm text-on-surface-variant truncate">Khách hàng: Trần Duy Quang</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px] text-error">schedule</span>
+<span class="text-label-sm text-error font-medium">15:30 Hôm nay</span>
+</div>
+</div>
+</div>
+<!-- Task Item 2 -->
+<div class="flex gap-4 p-3 rounded-lg hover:bg-surface-variant/20 transition-colors border border-transparent hover:border-outline-variant/30 cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-on-surface truncate font-semibold">Gửi báo giá quà tặng doanh nghiệp</p>
+<p class="font-label-sm text-on-surface-variant truncate">Đối tác: Vinamilk</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">schedule</span>
+<span class="text-label-sm text-on-surface-variant">09:00 Ngày mai</span>
+</div>
+</div>
+</div>
+<!-- Task Item 3 (Skeleton Example) -->
+<div class="flex gap-4 p-3 opacity-60">
+<div class="w-10 h-10 rounded-full skeleton shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 w-3/4 skeleton rounded"></div>
+<div class="h-3 w-1/2 skeleton rounded"></div>
+</div>
+</div>
+<!-- Task Item 4 -->
+<div class="flex gap-4 p-3 rounded-lg hover:bg-surface-variant/20 transition-colors border border-transparent hover:border-outline-variant/30 cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-on-surface truncate font-semibold">Kiểm tra đơn hàng xuất kho</p>
+<p class="font-label-sm text-on-surface-variant truncate">Đơn #2024-889</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">schedule</span>
+<span class="text-label-sm text-on-surface-variant">Thứ 6, 17/05</span>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-2.5 rounded-lg border border-primary-container text-primary-container font-label-md hover:bg-primary-container hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Thêm công việc mới
+                </button>
+</div>
+</div>
+</main>
+</body></html>
