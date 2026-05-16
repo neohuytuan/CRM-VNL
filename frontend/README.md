@@ -1,66 +1,82 @@
-# CRM Yen Sao Vinh Hung
+# CRM Yến Sào Vĩnh Hưng
 
-Ban nay la mot front-end CRM tinh, deploy Vercel on dinh, khong can dang nhap, duoc dung de demo cho khach va lam nen de noi backend sau.
+Đây là front-end CRM tĩnh, không cần đăng nhập, dùng để demo cho khách và làm nền để nối backend sau này.
 
 ## Stack
 
 - React 19
 - TypeScript
 - Vite
-- React Router voi `HashRouter`
-- CSS tokens + reusable UI components
-- Local persistence bang `localStorage`
+- React Router với `HashRouter`
+- Reusable UI components
+- Dữ liệu demo lưu bằng `localStorage`
 
-## Chay local
+## Chạy local trong thư mục `frontend`
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build production
+## Build production trong thư mục `frontend`
 
 ```bash
 npm run build
 ```
 
-Sau khi build, file tinh nam trong `dist/`.
+Sau khi build, file tĩnh nằm trong `dist/`.
 
 ## Deploy Vercel
 
-1. Import thu muc `frontend` vao Vercel
-2. Build command: `npm run build`
-3. Output directory: `dist`
-4. Khong can server rewrites vi app dang dung `HashRouter`
+Repository hiện đã được sắp xếp để deploy từ **repo root**, không cần import riêng thư mục `frontend`.
 
-## Kien truc de noi backend sau
+Thiết lập khuyến nghị:
+
+1. Import toàn bộ repository `CRM-VNL` vào Vercel
+2. Root Directory: để mặc định là `/`
+3. Vercel sẽ đọc `vercel.json` ở root và tự build app trong `frontend`
+4. Không cần thêm rewrite cho route vì app đang dùng `HashRouter`
+
+## Chạy lệnh từ repo root
+
+Bạn cũng có thể chạy từ thư mục gốc của repository:
+
+```bash
+npm run dev
+npm run build
+npm run lint
+```
+
+Các script này sẽ tự forward vào `frontend/`.
+
+## Kiến trúc để nối backend sau
 
 - `src/domain/types.ts`
-  - model nghiep vu cho users, leads, customers, opportunities, tasks, payments, activities
+  - Model nghiệp vụ cho users, leads, customers, opportunities, tasks, payments, activities
 - `src/data/seed.ts`
-  - mock data ban dau
+  - Mock data ban đầu
 - `src/app/CRMContext.tsx`
-  - state layer va action layer hien tai
-- `src/modules/pages.tsx`
-  - cac man hinh nghiep vu
+  - State layer và action layer hiện tại
+- `src/modules/`
+  - Các màn hình nghiệp vụ
 - `src/components/`
-  - button, badge, card, modal, drawer, icon
+  - Button, badge, card, modal, drawer, icon và page primitives
 
-## Cach noi backend muot ve sau
+## Cách nối backend mượt về sau
 
-1. Tach action trong `CRMContext.tsx` thanh service calls
-2. Thay `seed.ts` va `localStorage` bang API/Supabase client
-3. Giu nguyen view models trong `domain/types.ts` de UI khong phai viet lai
-4. Neu can auth that, bo sung route guards va session provider
+1. Tách action trong `CRMContext.tsx` thành service calls
+2. Thay `seed.ts` và `localStorage` bằng API hoặc Supabase client
+3. Giữ nguyên view model trong `domain/types.ts` để UI không phải viết lại
+4. Nếu cần auth thật, bổ sung route guards và session provider
 
-## Workflow da hoat dong trong ban demo
+## Workflow đang hoạt động trong bản demo
 
 - Sidebar navigation
-- Search toan app
-- Leads: them lead, tao co hoi
-- Danh sach: drawer chi tiet, sua khach, them ghi chu, tao task, tao co hoi
-- Pipeline: keo tha stage, tao payment nhanh
-- Tasks: board/list toggle, filter, doi trang thai, tao task
-- Payments: loc, cap nhat trang thai, ghi nhan thanh toan
-- Settings: chinh profile, xem role/team/tag, reset demo
-- Activity Log: xem lich su theo loai
+- Search toàn app
+- Leads: thêm lead, tạo cơ hội
+- Danh sách khách hàng: mở chi tiết, sửa thông tin, thêm ghi chú, tạo task, tạo cơ hội
+- Pipeline: kéo thả stage, tạo thanh toán nhanh
+- Tasks: board/list toggle, filter, đổi trạng thái, tạo task
+- Payments: lọc, cập nhật trạng thái, ghi nhận thanh toán
+- Settings: chỉnh profile, xem role/team/tag, reset demo
+- Activity Log: xem lịch sử theo loại
